@@ -1,0 +1,309 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+         xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+         xmlns:owl="http://www.w3.org/2002/07/owl#"
+         xml:base="http://example.org/social_ai.owl"
+         xmlns="http://example.org/social_ai.owl#"
+         xmlns:swrl="http://www.w3.org/2003/11/swrl#">
+
+<owl:Ontology rdf:about="http://example.org/social_ai.owl"/>
+
+<owl:ObjectProperty rdf:about="#has_published">
+  <rdfs:domain rdf:resource="#User"/>
+  <rdfs:range rdf:resource="#Post"/>
+  <owl:inverseOf rdf:resource="#has_author"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#has_category">
+  <rdfs:domain rdf:resource="#Post"/>
+  <rdfs:range rdf:resource="#Category"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#has_author">
+  <rdfs:domain rdf:resource="#Post"/>
+  <rdfs:range rdf:resource="#User"/>
+  <owl:inverseOf rdf:resource="#has_published"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#involved_in_case">
+  <rdfs:domain rdf:resource="#User"/>
+  <rdfs:range rdf:resource="#LegalCase"/>
+</owl:ObjectProperty>
+
+<owl:DatatypeProperty rdf:about="#has_name">
+  <rdfs:domain rdf:resource="#User"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#has_title">
+  <rdfs:domain rdf:resource="#Post"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+</owl:DatatypeProperty>
+
+<owl:Class rdf:about="#User">
+  <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Post">
+  <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Category">
+  <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Axiom">
+  <rdfs:subClassOf rdf:resource="#Post"/>
+  <owl:equivalentClass>
+    <owl:Class>
+      <owl:intersectionOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="#Post"/>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#has_category"/>
+          <owl:someValuesFrom rdf:resource="#Category"/>
+        </owl:Restriction>
+      </owl:intersectionOf>
+    </owl:Class>
+  </owl:equivalentClass>
+</owl:Class>
+
+<owl:Class rdf:about="#FakeNewsPost">
+  <rdfs:subClassOf rdf:resource="#Post"/>
+</owl:Class>
+
+<owl:Class rdf:about="#LegalCase">
+  <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+</owl:Class>
+
+<owl:NamedIndividual rdf:about="#u1">
+  <rdf:type rdf:resource="#User"/>
+  <has_published rdf:resource="#p1"/>
+  <has_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Алексей</has_name>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#u2">
+  <rdf:type rdf:resource="#User"/>
+  <has_published rdf:resource="#p2"/>
+  <has_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Мария</has_name>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#u3">
+  <rdf:type rdf:resource="#User"/>
+  <has_published rdf:resource="#p3"/>
+  <has_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Иван</has_name>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#u4">
+  <rdf:type rdf:resource="#User"/>
+  <has_published rdf:resource="#p4"/>
+  <involved_in_case rdf:resource="#FakeNewsCase_u4"/>
+  <has_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Екатерина</has_name>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#u5">
+  <rdf:type rdf:resource="#User"/>
+  <has_published rdf:resource="#p5"/>
+  <has_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Николай</has_name>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#u6">
+  <rdf:type rdf:resource="#User"/>
+  <has_published rdf:resource="#p6"/>
+  <has_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Ольга</has_name>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#u7">
+  <rdf:type rdf:resource="#User"/>
+  <has_published rdf:resource="#p7"/>
+  <has_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Дмитрий</has_name>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#u8">
+  <rdf:type rdf:resource="#User"/>
+  <has_published rdf:resource="#p8"/>
+  <has_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Анастасия</has_name>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#u9">
+  <rdf:type rdf:resource="#User"/>
+  <has_published rdf:resource="#p9"/>
+  <has_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Сергей</has_name>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#u10">
+  <rdf:type rdf:resource="#User"/>
+  <has_published rdf:resource="#p10"/>
+  <has_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Елена</has_name>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#u11">
+  <rdf:type rdf:resource="#User"/>
+  <has_published rdf:resource="#p11"/>
+  <has_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Роман</has_name>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#p1">
+  <rdf:type rdf:resource="#Post"/>
+  <has_category rdf:resource="#Fact"/>
+  <has_title rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Новый ИИ от OpenAI способен писать музыку</has_title>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#p2">
+  <rdf:type rdf:resource="#Post"/>
+  <has_category rdf:resource="#Fact"/>
+  <has_title rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Илон Маск планирует имплантировать чипы в мозг</has_title>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#p3">
+  <rdf:type rdf:resource="#Post"/>
+  <has_category rdf:resource="#Opinion"/>
+  <has_title rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Почему стоит опасаться глубоких фейков</has_title>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#p4">
+  <rdf:type rdf:resource="#Post"/>
+  <has_category rdf:resource="#FakeNews"/>
+  <rdf:type rdf:resource="#FakeNewsPost"/>
+  <has_title rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ИИ ошибся и выдал фейковую новость</has_title>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#p5">
+  <rdf:type rdf:resource="#Post"/>
+  <has_category rdf:resource="#Fact"/>
+  <has_title rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ИИ улучшает качество фото с низким разрешением</has_title>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#p6">
+  <rdf:type rdf:resource="#Post"/>
+  <has_category rdf:resource="#Opinion"/>
+  <has_title rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Советы по защите личных данных в соцсетях</has_title>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#p7">
+  <rdf:type rdf:resource="#Post"/>
+  <has_category rdf:resource="#Opinion"/>
+  <has_title rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Мнение: будущее за гибридным интеллектом</has_title>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#p8">
+  <rdf:type rdf:resource="#Post"/>
+  <has_category rdf:resource="#Fact"/>
+  <has_title rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Факт: ИИ уже используется в медицинской диагностике</has_title>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#p9">
+  <rdf:type rdf:resource="#Post"/>
+  <has_category rdf:resource="#Meme"/>
+  <has_title rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Ироничный мем про ИИ и роботов</has_title>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#p10">
+  <rdf:type rdf:resource="#Post"/>
+  <has_category rdf:resource="#Fact"/>
+  <has_title rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Новости: ИИ победил чемпиона по го</has_title>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#p11">
+  <rdf:type rdf:resource="#Post"/>
+  <has_category rdf:resource="#Opinion"/>
+  <has_title rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Мнение: роботы не заменят людей</has_title>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Fact">
+  <rdf:type rdf:resource="#Category"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Opinion">
+  <rdf:type rdf:resource="#Category"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#FakeNews">
+  <rdf:type rdf:resource="#Category"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Meme">
+  <rdf:type rdf:resource="#Category"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#FakeNewsLegalImp">
+  <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Imp"/>
+  <swrl:body>
+    <rdf:Description>
+      <rdf:first>
+        <swrl:ClassAtom>
+          <swrl:classPredicate rdf:resource="#User"/>
+          <swrl:argument1 rdf:resource="urn:swrl#u"/>
+        </swrl:ClassAtom>
+      </rdf:first>
+      <rdf:rest>
+        <rdf:Description>
+          <rdf:first>
+            <swrl:ClassAtom>
+              <swrl:classPredicate rdf:resource="#Post"/>
+              <swrl:argument1 rdf:resource="urn:swrl#p"/>
+            </swrl:ClassAtom>
+          </rdf:first>
+          <rdf:rest>
+            <rdf:Description>
+              <rdf:first>
+                <swrl:IndividualPropertyAtom>
+                  <swrl:propertyPredicate rdf:resource="#has_author"/>
+                  <swrl:argument1 rdf:resource="urn:swrl#p"/>
+                  <swrl:argument2 rdf:resource="urn:swrl#u"/>
+                </swrl:IndividualPropertyAtom>
+              </rdf:first>
+              <rdf:rest>
+                <rdf:Description>
+                  <rdf:first>
+                    <swrl:IndividualPropertyAtom>
+                      <swrl:propertyPredicate rdf:resource="#has_category"/>
+                      <swrl:argument1 rdf:resource="urn:swrl#p"/>
+                      <swrl:argument2 rdf:resource="#FakeNews"/>
+                    </swrl:IndividualPropertyAtom>
+                  </rdf:first>
+                  <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                </rdf:Description>
+              </rdf:rest>
+            </rdf:Description>
+          </rdf:rest>
+        </rdf:Description>
+      </rdf:rest>
+    </rdf:Description>
+  </swrl:body>
+  <swrl:head>
+    <rdf:Description>
+      <rdf:first>
+        <swrl:IndividualPropertyAtom>
+          <swrl:propertyPredicate rdf:resource="#involved_in_case"/>
+          <swrl:argument1 rdf:resource="urn:swrl#u"/>
+          <swrl:argument2 rdf:resource="urn:swrl#case"/>
+        </swrl:IndividualPropertyAtom>
+      </rdf:first>
+      <rdf:rest>
+        <rdf:Description>
+          <rdf:first>
+            <swrl:ClassAtom>
+              <swrl:classPredicate rdf:resource="#LegalCase"/>
+              <swrl:argument1 rdf:resource="urn:swrl#case"/>
+            </swrl:ClassAtom>
+          </rdf:first>
+          <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+        </rdf:Description>
+      </rdf:rest>
+    </rdf:Description>
+  </swrl:head>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#FakeNewsCase_u4">
+  <rdf:type rdf:resource="#LegalCase"/>
+</owl:NamedIndividual>
+
+<swrl:Variable rdf:about="urn:swrl#u"/>
+
+<swrl:Variable rdf:about="urn:swrl#p"/>
+
+<swrl:Variable rdf:about="urn:swrl#case"/>
+
+
+</rdf:RDF>
